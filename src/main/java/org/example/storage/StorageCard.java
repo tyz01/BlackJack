@@ -33,10 +33,14 @@ public class StorageCard {
         cards.add(new Card("Six Bubna", 6));
         cards.add(new Card("Six Cross", 6));
         cards.add(new Card("Six Pika", 6));
-        cards.add(new Card("Dama Chervi", 7));
-        cards.add(new Card("Dama Bubna", 7));
-        cards.add(new Card("Dama Cross", 7));
-        cards.add(new Card("Dama Pika", 7));
+        cards.add(new Card("Seven Chervi", 7));
+        cards.add(new Card("Seven Bubna", 7));
+        cards.add(new Card("Seven Cross", 7));
+        cards.add(new Card("Seven Pika", 7));
+        cards.add(new Card("Dama Chervi", 8));
+        cards.add(new Card("Dama Bubna", 8));
+        cards.add(new Card("Dama Cross", 8));
+        cards.add(new Card("Dama Pika", 8));
     }
 
     public static List<Card> getCards(){

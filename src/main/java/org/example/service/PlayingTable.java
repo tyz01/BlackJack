@@ -50,7 +50,7 @@ public class PlayingTable {
                 break;
             case 2:
                 getOneMore(visitor);
-                getOneMore(diller);
+                checkScoreForDiller();
                 checkAfterGetOneMore();
                 break;
             case 3:
@@ -62,22 +62,28 @@ public class PlayingTable {
         }
     }
 
+    private void checkScoreForDiller() {
+        if (diller.getScore() < 16) {
+            getOneMore(diller);
+        }
+    }
+
     private void stopGame() {
         takeMoreWhileScoreDillerLessThanSixteen();
 
-        if (visitor.getScore() > diller.getScore() && visitor.getScore() < 22) {
-            out.println("you win!!!!!!!!!!!!");
+        if (visitor.getScore() > diller.getScore() && visitor.getScore() < 22 && diller.getScore() < 22) {
+            throw new RuntimeException("you win");
         } else if (Objects.equals(visitor.getScore(), diller.getScore())) {
-            out.println("you and diller take common count score");
+            throw new RuntimeException("you and diller take common count score");
         } else {
-            out.println("you lose....");
+            throw new RuntimeException("you lose");
         }
-        throw new RuntimeException("The End.");
     }
 
     private void takeMoreWhileScoreDillerLessThanSixteen() {
         while (diller.getScore() <= MIN_COUNT_SCORE_FOR_DILLER) {
             getOneMore(diller);
+            checkScore();
         }
     }
 
@@ -88,10 +94,10 @@ public class PlayingTable {
 
     public void checkAfterGetOneMore() {
         checkScore();
-        if (visitor.getScore() > 22) {
-            throw new RuntimeException("visitor loses");
-        } else if (diller.getScore() > 22) {
-            throw new RuntimeException("diller loses");
+        if (visitor.getScore() > 21) {
+            throw new RuntimeException("you lose");
+        } else if (diller.getScore() > 21) {
+            throw new RuntimeException("you win");
         }
     }
 }
