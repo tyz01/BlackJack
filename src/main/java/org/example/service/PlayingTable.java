@@ -51,7 +51,6 @@ public class PlayingTable {
             case 2:
                 getOneMore(visitor);
                 getOneMore(diller);
-                checkScore();
                 checkAfterGetOneMore();
                 break;
             case 3:
@@ -66,7 +65,7 @@ public class PlayingTable {
     private void stopGame() {
         takeMoreWhileScoreDillerLessThanSixteen();
 
-        if (visitor.getScore() > diller.getScore()) {
+        if (visitor.getScore() > diller.getScore() && visitor.getScore() < 22) {
             out.println("you win!!!!!!!!!!!!");
         } else if (Objects.equals(visitor.getScore(), diller.getScore())) {
             out.println("you and diller take common count score");
@@ -88,6 +87,7 @@ public class PlayingTable {
     }
 
     public void checkAfterGetOneMore() {
+        checkScore();
         if (visitor.getScore() > 22) {
             throw new RuntimeException("visitor loses");
         } else if (diller.getScore() > 22) {
